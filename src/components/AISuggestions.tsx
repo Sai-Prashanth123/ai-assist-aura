@@ -74,7 +74,7 @@ export function AISuggestions({ meetingId, isHost = false }: AISuggestionsProps)
 
     const connectWebSocket = () => {
       try {
-        const ws = new WebSocket(`ws://localhost:8765/${meetingId}`);
+        const ws = new WebSocket(`wss://backendgaap.azurewebsites.net:8765/${meetingId}`);
         wsRef.current = ws;
 
         ws.onopen = () => {
@@ -155,7 +155,7 @@ export function AISuggestions({ meetingId, isHost = false }: AISuggestionsProps)
 
   const startAI = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/meetings/${meetingId}/start-ai`, {
+      const response = await fetch(`https://backendgaap.azurewebsites.net/api/meetings/${meetingId}/start-ai`, {
         method: "POST",
       });
       
@@ -171,7 +171,7 @@ export function AISuggestions({ meetingId, isHost = false }: AISuggestionsProps)
 
   const stopAI = async () => {
     try {
-      await fetch(`http://127.0.0.1:8000/api/meetings/${meetingId}/stop-ai`, {
+      await fetch(`https://backendgaap.azurewebsites.net/api/meetings/${meetingId}/stop-ai`, {
         method: "POST",
       });
       
